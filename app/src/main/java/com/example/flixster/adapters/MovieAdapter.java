@@ -3,6 +3,7 @@ package com.example.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import org.jetbrains.annotations.NotNull;
 import org.parceler.Parcels;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
@@ -58,6 +61,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private int RADIUS = 15;
+        private int MARGIN = 0;
+
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
@@ -67,23 +73,31 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+
             itemView.setOnClickListener(this);
         }
 
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
-            String imageUrl;
+            tvOverview.setMovementMethod(new ScrollingMovementMethod());
 
-            if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            String imageUrl;
+            int placeholderUrl = 0;
+
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
                 imageUrl = movie.getBackdropPath();
+                placeholderUrl = R.drawable.flicks_backdrop_placeholder;
             } else {
                 imageUrl = movie.getPosterPath();
+                placeholderUrl = R.drawable.flicks_movie_placeholder;
             }
 
             Glide.with(context)
                     .load(imageUrl)
-                    .placeholder(R.drawable.flicks_movie_placeholder)
+                    .circleCrop()
+                    .transform(new RoundedCornersTransformation(RADIUS, MARGIN))
+                    .placeholder(placeholderUrl)
                     .into(ivPoster);
         }
 
