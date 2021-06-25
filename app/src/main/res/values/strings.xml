@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Flixster</string>
+    <string name="main_title">Flixster |  Now Playing</string>
 </resources>
