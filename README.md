@@ -34,7 +34,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![App Walkthrough](screenshots/flixster_walkthrough_portrait.gif)
+![App Portrait Walkthrough](screenshots/flixster_walkthrough_portrait.gif)
+![App Landscape Walkthrough](screenshots/flixster_walkthrough_landscape.gif)
 
 GIF created with [Kap](https://getkap.co/).
 
