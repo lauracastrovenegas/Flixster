@@ -34,7 +34,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://imgur.com/MwqSR4u' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![App Walkthrough](screenshots/flixster_walkthrough_portrait.gif)
 
 GIF created with [Kap](https://getkap.co/).
 
